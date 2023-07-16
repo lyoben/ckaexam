@@ -1,0 +1,51 @@
+> ctr image ls
+
+> kubectl run busybox --image=yauritux/busybox-curl --rm -it --restart=Never -- sh 
+
+> systemctl status <service name>
+> sudo journalctl -u <service name>
+> kubectl exec webapp -- cat /log/app.log
+> kubectl get componentstatuses --kubeconfig admin.kubeconfig
+
+
+> cat /root/akshay.csr | base64 -w 0
+
+> web-service.apps.svc.cluster.local
+> 10-244-2-5.apps.pod.cluster.local
+> /etc/coredns/Corefile      <-- can be refer from 'kubectl -n kube-system describe deployments.apps' in Args field
+
+> kubelet config 
+config=/var/lib/kubelet/config.yaml 
+
+> Injecting Secret
+
+spec:
+  containers:
+  - image: kodekloud/simple-webapp-mysql
+    name: webapp
+    envFrom:
+    - secretRef:
+        name: db-secret
+
+> To check if API object is namespaced object
+kubectl api-resources --namespaced=true
+kubectl api-resources --namespaced=false
+
+> Kube-api-serever define the IP range for Service
+kube-api-server --service-cluster-ip-range ipNet    <-- Default: 10.0.0.0/24
+
+
+> kubeadm token create --print-join-command
+> kubelet --version
+> kubeadm version
+
+
+
+etcdctl snapshot status snapshot.db
+etcdctl snapshot restore.db --data-dir /var/lib/etcd-from-backup
+
+etcdctl --endpoints=127.0.0.1:2379 \
+--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+--cert=/etc/kubernetes/pki/etcd/server.crt \
+--key=/etc/kubernetes/pki/etcd/server.key \
+snapshot save /opt/snapshot-pre-boot.db
