@@ -50,7 +50,33 @@ etcdctl --endpoints=127.0.0.1:2379 \
 --key=/etc/kubernetes/pki/etcd/server.key \
 snapshot save /opt/snapshot-pre-boot.db
 
-
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: world
+#  namespace: world
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target:  /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "world.universe.mine"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/asia"
+        backend:
+          service:
+            name: asia
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/europe"
+        backend:
+          service:
+            name: europe
+            port:
+              number: 80
 
 tmux attach -t 0
 Ctrl+B D — Detach from the current session.
