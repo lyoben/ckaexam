@@ -78,6 +78,11 @@ spec:
             port:
               number: 80
 
+
+# kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+ls /etc/cni/net.d/10-weave.conflist 
+ls /opt/cni/bin/
+
 tmux attach -t 0
 Ctrl+B D — Detach from the current session.
 Ctrl+B % — Split the window into two panes horizontally.
