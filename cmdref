@@ -39,7 +39,8 @@ kube-api-server --service-cluster-ip-range ipNet    <-- Default: 10.0.0.0/24
 > kubelet --version
 > kubeadm version
 
-
+# kubectl drain node01 --ignore-daemonsets
+# kubectl drain acgk8s-worker1 --delete-local-data --ignore-daemonsets --force
 
 etcdctl snapshot status snapshot.db
 etcdctl snapshot restore.db --data-dir /var/lib/etcd-from-backup
